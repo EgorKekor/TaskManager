@@ -1,0 +1,45 @@
+@import "mixins";
+@import "ProcessColumn/ProcessColumn";
+@import "ProcessColumn/process-column_left";
+@import "ProcessColumn/process-column_right";
+@import "ProcessColumn/process-column_center";
+
+@import "Stage/Stage";
+@import "Stage/stage__close-container";
+@import "Stage/stage__close";
+@import "Stage/stage__name";
+
+
+@import "TaskList/TaskList";
+
+@import "Task/Task";
+@import "Task/task__author";
+@import "Task/task__description";
+@import "Task/task__name";
+@import "Task/task_theme_1";
+
+@import "Section/Section";
+@import "Section/section__header";
+@import "Section/section__stages";
+@import "Section/section__footer";
+@import "Section/section__footer-item";
+
+@import "Board/Board";
+
+
+
+:root {
+    --color-yellow: rgb(244, 252, 146);
+    --color-yellow-border: rgb(238, 255, 51);
+
+    --color-border: rgb(66, 98, 255);
+
+    --font-size-classic: 14px;
+    --font-size-large: 20px;
+    --font-size-big: 36px;
+}
+
+body {
+    font-size: var(--font-size-classic);
+}
+

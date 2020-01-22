@@ -1,0 +1,15 @@
+.Section {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0px 1px;
+
+    width: 400px;
+    height: 400px;
+
+    border-left: solid 2px var(--color-border);
+    border-right: solid 2px var(--color-border);
+}

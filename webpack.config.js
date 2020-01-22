@@ -38,6 +38,9 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
+    new CopyPlugin([
+      { from: '../static', to: 'static' },
+    ]),
     new HtmlWebpackPlugin({
       template: './index.html'
     })

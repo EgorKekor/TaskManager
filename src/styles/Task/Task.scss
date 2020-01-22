@@ -1,0 +1,12 @@
+.Task {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 90%;
+    height: 100px;
+    min-height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}

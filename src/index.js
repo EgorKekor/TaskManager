@@ -1,5 +1,10 @@
+import "./styles/style.scss"
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App.js";
+import { ProcessColumn } from "./components/ProcessColumn/ProcessColumn.js";
+import { Section } from "./components/Section/Section.js";
+import { Board } from "./components/Board/Board.js";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+    <Board/>,
+    document.getElementById("root"));

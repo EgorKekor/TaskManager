@@ -1,0 +1,9 @@
+.stage__close {
+    border: solid 1px transparent;
+    width: 10px;
+    height: 10px;
+
+    &:hover {
+        border: solid 1px goldenrod;
+    }
+}
