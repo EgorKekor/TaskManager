@@ -1,67 +1,108 @@
 import React from "react"
+import ReactDOM from "react-dom";
+
 import { ProcessColumn } from "../ProcessColumn/ProcessColumn.js";
+import { InputProcessColumn } from "../InputProcessColumn/InputProcessColumn.js";
 
 export class Section extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            amount: 2
+        }
+        this.data = {
             stages: [
                 "Сделать",
                 "Готово"
             ],
-            taskList1: [
-                {
-                    name: "task1",
-                    author: "Kekos",
-                    description: "Написать приложение 11111111111111111111111111111111111111111111aaaaaaaaaaaaaaaaaaazzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-                },
-                {
-                    name: "task2",
-                    author: "Kekos",
-                    description: "Написать хорошее приложение"
-                },
-            ],
-            taskList2: [
-                {
-                    name: "task3",
-                    author: "Kekos",
-                    description: "iiiiii"
-                },
-                {
-                    name: "task4",
-                    author: "Kekos",
-                    description: "sssssss"
-                },
-                {
-                    name: "task5",
-                    author: "Kekos",
-                    description: "zzzzzzzzzzzz"
-                },
-                {
-                    name: "task4",
-                    author: "Kekos",
-                    description: "sssssss"
-                },
+            taskList: [
+                [],
+                []
             ],
             instructions: [
                 "Здесь вы можете указать инструкции к выполнению",
                 "aaaaa"
             ],
         };
+        console.log(this.data)
+    }
+
+    deleteColumn = (event) => {
+        const id = event.target.getAttribute("owner_id");
+        const deletePosition = id[id.length - 1];
+
+        console.log(deletePosition);
+
+        this.data.taskList.splice(deletePosition, 1);
+        this.data.stages.splice(deletePosition, 1);
+
+        this.setState(prevState => {
+            const copyState = Object.assign({}, prevState);
+            return {
+                amount: prevState.amount - 1
+            };
+        });
+    }
+
+    inputOk = (event, columnData) => {
+        this.data.stages.push(columnData.name);
+        if (columnData.instructions) {
+            for (const instruction of columnData.instructions) {
+                this.data.instructions.push(instruction);
+            }
+        }
+        this.data.taskList.push(new Array);
+        ReactDOM.unmountComponentAtNode(document.getElementById("input_form"));
+
+        this.setState(prevState => {
+            return {
+                amount: prevState.amount + 1
+            };
+        });
+    }
+
+    inputCancel = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById("input_form"));
+    }
+
+    addColumn = (event) => {
+        ReactDOM.render(
+            <InputProcessColumn
+                okHandler={this.inputOk}
+                cancelHandler={this.inputCancel} />,
+            document.getElementById("input_form"));
+    }
+
+    addNewTask = (task, num) => {
+        this.data.taskList[num].push(task);
     }
 
     render = () => {
         const sectionName = this.props.sectionName;
-        const stages = this.state.stages;
-        const tasks = [this.state.taskList1, this.state.taskList2];
-        const instructions = this.state.instructions;
+        const stages = this.data.stages;
+        const tasks = this.data.taskList;
+        const instructions = this.data.instructions;
         return (
             <div className="Section">
                 <div className="section__header">{sectionName}</div>
                 <div className="section__stages">
                     {stages.map((stage, num) => (
-                        <ProcessColumn taskList={tasks[num]} stageName={stage} key={num}></ProcessColumn>
+                        <ProcessColumn
+                            taskList={tasks[num]}
+                            taskListIndex={num}
+                            taskAdder={this.addNewTask}
+                            stageName={stage}
+                            key={num}
+                            id={sectionName + num}
+                            deleteCallback={this.deleteColumn}
+                        ></ProcessColumn>
                     ))}
+                    <div className="ProcessColumnAdd">
+                        <img className="process-column-add__item"
+                            src="https://localhost:8080/static/add.png"
+                            onClick={this.addColumn}>
+                        </img>
+                    </div>
                 </div>
                 <div className="section__footer">
                     {instructions.map((instr, num) => (

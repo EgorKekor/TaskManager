@@ -1,0 +1,15 @@
+.ProcessColumnAdd {
+    display: flex;
+    flex-grow: 0.05;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border-top: solid 1px var(--color-border);
+  
+    width: 1px;
+    height: 100%;
+    background-color: whitesmoke;
+  
+  }

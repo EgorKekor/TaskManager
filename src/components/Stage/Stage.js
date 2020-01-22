@@ -13,7 +13,10 @@ export class Stage extends React.Component {
                 <div className="stage__close-container">
                     <img
                         className="stage__close"
-                        src="https://localhost:8080/static/close.png">
+                        src="https://localhost:8080/static/close.png"
+                        onClick={this.props.deleteCallback}
+                        owner_id={this.props.ownerId}
+                        >
                     </img>
                 </div>
             </div>

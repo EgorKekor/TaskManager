@@ -1,8 +1,22 @@
 @import "mixins";
+@import "ProcessColumnAdd/ProcessColumnAdd";
+@import "ProcessColumnAdd/ProcessColumnAdd__item";
+
 @import "ProcessColumn/ProcessColumn";
 @import "ProcessColumn/process-column_left";
 @import "ProcessColumn/process-column_right";
 @import "ProcessColumn/process-column_center";
+
+@import "InputProcessColumn/InputProcessColumn";
+@import "InputProcessColumn/InputProcessColumn__name";
+@import "InputProcessColumn/InputProcessColumn__instruction";
+@import "InputProcessColumn/InputProcessColumn-instruction__add";
+@import "InputProcessColumn/InputProcessColumn__button";
+@import "InputProcessColumn/InputProcessColumn__button-container";
+
+@import "InputTask/InputTask";
+@import "InputTask/InputTask__name";
+@import "InputTask/InputTask__description";
 
 @import "Stage/Stage";
 @import "Stage/stage__close-container";
@@ -11,6 +25,7 @@
 
 
 @import "TaskList/TaskList";
+@import "TaskList/TaskList__add";
 
 @import "Task/Task";
 @import "Task/task__author";
@@ -33,6 +48,7 @@
     --color-yellow-border: rgb(238, 255, 51);
 
     --color-border: rgb(66, 98, 255);
+    --color-input: rgb(238, 255, 171);
 
     --font-size-classic: 14px;
     --font-size-large: 20px;

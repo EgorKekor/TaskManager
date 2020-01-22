@@ -8,7 +8,6 @@ export class Board extends React.Component {
         this.state = {
             sectionsList: [
                 "Проектирование",
-                "Разработка",
             ]
         }
     }
