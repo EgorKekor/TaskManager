@@ -44,6 +44,19 @@ export class Section extends React.Component {
         });
     }
 
+    moveTask = (taskId, src, dest) => {
+        const stageNumber = src;
+        const taskNumber = Number(taskId[1]);
+
+        const task = this.data.taskList[stageNumber][taskNumber];
+        this.data.taskList[stageNumber].slice(taskNumber, 1);
+        this.data.taskList[dest].push(task);
+        this.setState(prevState => {
+            return {};
+        });
+        console.log(taskId, src, dest);
+    }
+
     inputOk = (event, columnData) => {
         this.data.stages.push(columnData.name);
         if (columnData.instructions) {
@@ -88,11 +101,14 @@ export class Section extends React.Component {
                 <div className="section__stages">
                     {stages.map((stage, num) => (
                         <ProcessColumn
+                            length={this.data.stages.length}
+                            taskMover={this.moveTask}
                             taskList={tasks[num]}
                             taskListIndex={num}
                             taskAdder={this.addNewTask}
                             stageName={stage}
                             key={num}
+                            num={num}
                             id={sectionName + num}
                             deleteCallback={this.deleteColumn}
                         ></ProcessColumn>
