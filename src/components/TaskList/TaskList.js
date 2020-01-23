@@ -70,9 +70,12 @@ export class TaskList extends React.Component {
         }
 
         task.onmouseup = (ev) => {
-            const finalStage = this._getColumnNum(ev.pageX, ev.pageY);
+            let finalStage = this._getColumnNum(ev.pageX, ev.pageY);
             document.onmousemove = null;
             task.onmouseup = null;
+            if (!finalStage) {
+                finalStage = startStage;
+            }
             this.props.taskMover(task.id.slice(0, 2), startStage, finalStage);
             task.remove();
         }
